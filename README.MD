@@ -23,7 +23,7 @@ Its where all the code is composed in one piece. E.g. The front end, back end an
 - **DevOps Introduction**
 - DevOps is a culture that bridges the gap between Development and Operations
 - This is done by creating an environmetn with all the updates and installations necessary to run the application
-- The environment can be shared with other employees so that each one of them will have the same VM with the pre installed software
+- The environment can be shared with other employees so that each one of them will have the same VM with the necessary installation requirements
 - This overcomes the issue where the application was only working on a certain persons computer
 -
 - **Life before DevOps**
