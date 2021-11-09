@@ -123,3 +123,29 @@ Common commands:
      winrm           executes commands on a machine via WinRM
      winrm-config    outputs WinRM configuration to connect to the machine
 ```
+- Testing the Environment to see we have all the necessary packages installed
+```
+- run 'vagrant up' in /starter-code
+- cd into environment/spec-tests
+- run these commands here:
+gem install bundler
+ruby --version
+bundle
+- next open a new bash terminal and ssh into it
+- Run these commands in the VM:
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install nginx -y
+sudo apt-get install nodejs -y
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install nodejs
+sudo npm install pm2 -g
+- Next, cd into app/app
+- Run these commands:
+install npm
+npm start
+- Now you should be able to connect to the website on the port 3000. e.g.:
+192.168.10.100:3000
+http://192.168.10.100:3000/fibonacci/11
+```
