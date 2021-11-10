@@ -145,7 +145,70 @@ sudo npm install pm2 -g
 - Run these commands:
 install npm
 npm start
+- Run this command on terminal within VS code to see if the necessary packages
+- have been installed:
+rake spec
 - Now you should be able to connect to the website on the port 3000. e.g.:
 192.168.10.100:3000
 http://192.168.10.100:3000/fibonacci/11
+```
+### Linux commands
+- Who am I `uname` or `uname -a`
+- wHERE AM i `pwd` will display currnet location (working directory)
+- How can I list contents including hidden files `ls -a`
+- Delete file `rm filename` or `rm -rf filename` to forcefully delete
+- Create a file `touch filename` or `nano filename`
+- Create a directory (folder) `mkdir dir_name`
+- Navigate inside directory `cd dir_name`
+- List all processes running `ps aux` or `top` inside of the VM
+- How too kill a working process `kill process_id/s`
+- Wild card is used to deal with multipple files with the same extension `*`
+- File permissions `+x executable`
+- `read (r) write (w)`
+- Check permissions `ll`
+- Change premission `chmod permission_required filename`
+- `chmod 700` for all `chmod 400` readable
+- Print the last 2 lines from a file `tail -2 filename`
+- Copy file or folder command in linux?:
+- `cp file_path_you_want_2_copy destination_to_copy_the_file_to`
+- Cut paste - move file or folder:
+- `mv file_path_you_want_2_copy destination_to_copy_the_file_to`
+- How to use piping | `ls | head -2`
+
+-**Variable and Environment Variable**
+- how to check env var? `env`
+- Creating env var `export key=value`
+- `export name=mohammed`
+- `printenv name`
+
+- Vagranfile for creating multi machines
+```
+Vagrant.configure("2") do |config|
+
+  # creating a virtual machine ubuntu 
+  config.vm.define "web" do |web|
+    web.vm.box = "ubuntu/xenial64"
+
+    # assign private ip to our VM
+    web.vm.network "private_network", ip: "192.168.10.100"
+
+    # set the host name for your vm
+    web.vm.hostname = "web"
+
+    # Sync folder from OS to VM
+    web.vm.synced_folder ".", "/home/vagrant/app"
+
+    # provide the provision file to be run for the web app
+    web.vm.provision "shell", path: "./environment/provision.sh"
+  end
+
+  config.vm.define "mongodb" do |mongodb|
+
+    mongodb.vm.box = "ubuntu/xenial64"
+    mongodb.vm.network "private_network", ip: "192.168.10.150"
+    mongodb.vm.hostname = "mongodb"
+    mongodb.vm.synced_folder ".", "/home/vagrant/app"
+    mongodb.vm.provision "shell", path: "./environment/db/provision.sh"
+  end
+end
 ```
